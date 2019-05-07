@@ -1,4 +1,4 @@
-import { createStore, combineReducers, Store } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { todoReducer } from '../Todo/TodoReducers';
 import { RootState } from './RootState';

@@ -3,23 +3,19 @@ import { RootState } from '../store/RootState';
 import { useMappedState, useDispatch } from 'redux-react-hook';
 import { TodoInput } from './TodoInput';
 import { TypeKeys } from './TodoActions';
+import { Heading } from '../ui/Heading/Heading.style';
+import { useTodo } from './useTodo';
 
 export const Todo: React.FC = () => {
-    const { todos } = useMappedState(
-        useCallback(
-            (state: RootState) => ({
-                todos: state.todos.tasks
-            }),
-            [],
-        ),
-    );
-    const dispatch = useDispatch();
+    const { todos, deleteTodo } = useTodo();
+
+    console.log(todos);
 
     return (
         <div>
-            Todo list<br />
-            {todos.map((todo, index) => (
-                <div key={index}>{todo.value} <button onClick={() =>  dispatch({ type: TypeKeys.REMOVE_TODO, index })}>Delete</button></div>
+            <Heading as="h1">Todo list</Heading>
+            {todos.tasks.map((todo, index) => (
+                <div key={index}>{todo.value} <button onClick={() => deleteTodo(index)}>Delete</button></div>
             ))}
 
             <TodoInput />

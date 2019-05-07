@@ -20,4 +20,4 @@ export type TodoActionTypes =
     | RemoveTodoAction;
 
 export const addTodo = (todo: Todo) => ({ type: TypeKeys.ADD_TODO, todo });
-export const removeTodo = (index: number) => ({ type: TypeKeys.ADD_TODO, index });
+export const removeTodo = (index: number) => ({ type: TypeKeys.REMOVE_TODO, index });
