@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { todoReducer } from '../Todo/TodoReducers';
+import { todoReducer } from '../Todo/TodoReducer';
 import { RootState } from './RootState';
 
 const rootReducer = combineReducers({

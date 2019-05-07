@@ -1,22 +1,23 @@
-import { useMappedState, useDispatch } from 'redux-react-hook';
 import { useCallback } from 'react';
+// @ts-ignore Types are not up to date yet
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/RootState';
-import { TodoState } from './TodoState';
-import { addTodo, removeTodo } from './TodoActions';
+import { TodoState, Todo } from './TodoState';
+import { removeTodoAction, addTodoAction } from './TodoActions';
 
 type UseTodoProps = {
     todos: TodoState;
-    deleteTodo: (index: number) => void;
+    removeTodo: (index: number) => void;
+    addTodo: (todo: Todo) => void;
 }
 
 export const useTodo = (): UseTodoProps => {
-    const todos = useMappedState(
-        useCallback((state: RootState) => state.todos, [])
-    );
-
     const dispatch = useDispatch();
-    // Todo, dynamic index instead of 0
-    const deleteTodo = useCallback(() => dispatch(removeTodo(0)), []);
 
-    return { todos, deleteTodo };
+    const todos: TodoState = useSelector((state: RootState) => state.todos);
+    
+    const removeTodo = useCallback((index: number) => dispatch(removeTodoAction(index)), []);
+    const addTodo = useCallback((todo: Todo) => dispatch(addTodoAction(todo)), []);
+
+    return { todos, removeTodo, addTodo };
 }

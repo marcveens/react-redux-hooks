@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
-import { TypeKeys } from './TodoActions';
-import { useDispatch } from 'redux-react-hook';
 import { TodoInput as StyledTodoInput } from './Todo.style';
+import { useTodo } from './useTodo';
 
 export const TodoInput: React.FC = () => {
-    const [newTodo, setNewTodo] = useState('');
-    const dispatch = useDispatch();
+    const [newTodo, setNewTodoValue] = useState('');
+    const { addTodo } = useTodo();
 
-    const addTodo = () => {
+    const addNewTodo = () => {
         if (newTodo !== '') {
-            dispatch({ type: TypeKeys.ADD_TODO, todo: { value: newTodo } });
-            setNewTodo('');
+            addTodo({ value: newTodo });
+            setNewTodoValue('');
         }
     };
 
     return (
         <StyledTodoInput>
-            <input type="text" value={newTodo} onChange={e => setNewTodo(e.currentTarget.value)} />
-            <button onClick={addTodo}>add</button>
+            <input type="text" value={newTodo} onChange={e => setNewTodoValue(e.currentTarget.value)} />
+            <button onClick={addNewTodo}>add</button>
         </StyledTodoInput>
     );
 };

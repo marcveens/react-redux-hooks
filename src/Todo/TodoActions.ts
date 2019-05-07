@@ -1,4 +1,4 @@
-import { Todo } from "./TodoState";
+import { Todo } from './TodoState';
 
 export enum TypeKeys {
     ADD_TODO = 'ADD_TODO',
@@ -19,5 +19,5 @@ export type TodoActionTypes =
     | AddTodoAction 
     | RemoveTodoAction;
 
-export const addTodo = (todo: Todo) => ({ type: TypeKeys.ADD_TODO, todo });
-export const removeTodo = (index: number) => ({ type: TypeKeys.REMOVE_TODO, index });
+export const addTodoAction = (todo: Todo) => ({ type: TypeKeys.ADD_TODO, todo });
+export const removeTodoAction = (index: number) => ({ type: TypeKeys.REMOVE_TODO, index });
