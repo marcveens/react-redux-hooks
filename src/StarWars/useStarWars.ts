@@ -10,7 +10,7 @@ import { useAsyncTaskFetch } from '../api/AsyncData';
 type UseStarWarsProps = StarWarsState;
 
 const useAsyncTask = (task: Function, deps: any[]) => {
-	const people: StarWarsState = useSelector((state: RootState) => state.starWars);
+	const starWars: StarWarsState = useSelector((state: RootState) => state.starWars);
 	let dispatch = useDispatch();
 
 	useEffect(() => {
@@ -24,7 +24,9 @@ const useAsyncTask = (task: Function, deps: any[]) => {
 			}
 		};
 
-		start();
+		if (!starWars.people.data && !starWars.people.loading && !starWars.people.error) {
+			start();
+		}
 
 		const cleanup = () => {
 			dispatch = () => null; // avoid to dispatch after stopped
@@ -32,7 +34,7 @@ const useAsyncTask = (task: Function, deps: any[]) => {
 		return cleanup;
 	}, deps);
 
-	return people;
+	return starWars;
 };
 
 
