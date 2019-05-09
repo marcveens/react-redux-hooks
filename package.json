@@ -30,7 +30,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "eslint": "eslint --ext .ts,.tsx src/**",
-    "eslint-report": "eslint -f json -o eslint-report.json src/**"
+    "eslint-report": "eslint -f json -o eslint-report.json **/*.{ts,tsx}"
   },
   "eslintConfig": {
     "extends": "react-app"
