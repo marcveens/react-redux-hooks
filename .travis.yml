@@ -11,9 +11,9 @@ cache:
     - node_modules
 
 script:
-  - npm run lint
+  - npm run eslint
   - npm run build
-  - npm run tslint-report && sonar-scanner
+  - npm run eslint-report && sonar-scanner
 
 addons:
   sonarcloud:
