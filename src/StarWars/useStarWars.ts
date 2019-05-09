@@ -5,7 +5,7 @@ import { RootState } from '../store/RootState';
 import { StarWarsState } from './StarWarsState';
 import { setLoaderStarWarsAction, setErrorStarWarsAction, setStarWarsAction } from './StarWarsActions';
 import { ApiStarWarsPeople } from '../api/types/ApiStarWarsRequest';
-import { useAsyncTaskFetch } from '../api/AsyncData';
+import { useAsyncTaskFetch } from '../store/AsyncData';
 
 type UseStarWarsProps = StarWarsState;
 
@@ -27,11 +27,6 @@ const useAsyncTask = (task: Function, deps: any[]) => {
 		if (!starWars.people.data && !starWars.people.loading && !starWars.people.error) {
 			start();
 		}
-
-		const cleanup = () => {
-			dispatch = () => null; // avoid to dispatch after stopped
-		};
-		return cleanup;
 	}, deps);
 
 	return starWars;
