@@ -1,13 +1,13 @@
 export type SetLoaderAction<T> = {
-    type: T
+    type: T;
 }
 
 export type SetErrorAction<T> = {
     type: T;
-    error: any;
+    error: string;
 }
 
 export type SetDataAction<TType, TData> = {
     type: TType;
-    data: TData | null
+    data: TData | null;
 }

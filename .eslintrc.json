@@ -1,13 +1,19 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -19,15 +25,12 @@
         "react",
         "react-hooks"
     ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
         "quotes": [
             "error",
             "single"
@@ -36,7 +39,24 @@
             "error",
             "always"
         ],
+        "jsx-quotes": [
+            "error",
+            "prefer-double"
+        ],
+        "no-console": 0,
+        "@typescript-eslint/explicit-function-return-type": {
+            "allowExpressions": true
+        },
+        "@typescript-eslint/prefer-interface": false,
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/exhaustive-deps": "warn",
+        "react/prop-types": [
+            2,
+            {
+                "ignore": [
+                    "children"
+                ]
+            }
+        ]
     }
 }

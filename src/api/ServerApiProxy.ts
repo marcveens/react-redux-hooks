@@ -8,7 +8,7 @@ type FetchDataOptions = {
 export class ServerApiProxy {
     private readonly urlBuilder: ApiUrlBuilder;
 
-    constructor() {
+    public constructor() {
         this.urlBuilder = new ApiUrlBuilder('/');
     }
 

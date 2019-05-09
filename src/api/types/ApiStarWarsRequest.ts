@@ -1,4 +1,4 @@
-import { ApiStarWarsPerson } from "./ApiStarWarsPerson";
+import { ApiStarWarsPerson } from './ApiStarWarsPerson';
 
 type StarWarsRequest = {
     count: number;

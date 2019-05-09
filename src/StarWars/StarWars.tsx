@@ -2,7 +2,7 @@ import React from 'react';
 import { Heading } from '../ui/Heading/Heading.style';
 import { useStarWars } from './useStarWars';
 
-export const StarWars: React.FC = () => {
+export const StarWars: React.FC = (): JSX.Element => {
     const { people } = useStarWars();
 
     return (

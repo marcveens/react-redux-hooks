@@ -1,9 +1,9 @@
 import { TypeKeysType } from './BaseTypeKeys';
 
 type BaseAction = {
-    type: any;
-    error: any;
-    data: any;
+    type: string;
+    error: string;
+    data: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
 type ActionParameter = Partial<BaseAction>;

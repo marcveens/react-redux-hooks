@@ -7,30 +7,30 @@ import { StarWars } from './StarWars/StarWars';
 import { Divider } from './ui/Divider/Divider.style';
 
 const App: React.FC = () => {
-  const [showDelayedStarWars, setDelay] = useState(false);
+    const [showDelayedStarWars, setDelay] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setDelay(true);
-    }, 3000);
-  });
+    useEffect(() => {
+        setTimeout(() => {
+            setDelay(true);
+        }, 3000);
+    });
 
-  return (
-    <Layout>
-      <Normalize />
-      <GlobalStyle />
+    return (
+        <Layout>
+            <Normalize />
+            <GlobalStyle />
 
-      <Todo />
+            <Todo />
 
-      <Divider />
+            <Divider />
 
-      <StarWars />
+            <StarWars />
 
-      {showDelayedStarWars && 
+            {showDelayedStarWars && 
         <StarWars />
-      }      
-    </Layout>
-  );
-}
+            }      
+        </Layout>
+    );
+};
 
 export default App;

@@ -19,4 +19,4 @@ export const useTodo = (): UseTodoProps => {
     const addTodo = useCallback((todo: Todo) => dispatch(addTodoAction(todo)), [dispatch]);
 
     return { todos, removeTodo, addTodo };
-}
+};

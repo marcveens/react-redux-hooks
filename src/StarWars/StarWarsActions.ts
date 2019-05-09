@@ -17,5 +17,5 @@ export type StarWarsActionTypes =
     | setStarWarsAction;
 
 export const setLoaderStarWarsAction = () => ({ type: TypeKeys.SET_LOADER });
-export const setErrorStarWarsAction = (error: any) => ({ type: TypeKeys.SET_ERROR, error });
+export const setErrorStarWarsAction = (error: string) => ({ type: TypeKeys.SET_ERROR, error });
 export const setStarWarsAction = (data: ApiStarWarsPerson[] | null) => ({ type: TypeKeys.SET_DATA, data });

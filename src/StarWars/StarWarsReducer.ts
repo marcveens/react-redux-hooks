@@ -5,7 +5,7 @@ import { baseReducer } from '../BaseRedux/BaseReducer';
 
 const initialState: StarWarsState = {
     people: asyncDataInitialState
-}
+};
 
 export const starWarsReducer = (state: StarWarsState = initialState, action: StarWarsActionTypes) => 
     baseReducer<StarWarsState>(state, action, 'people', TypeKeys);

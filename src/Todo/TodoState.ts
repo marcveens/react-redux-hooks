@@ -3,5 +3,5 @@ export type Todo = {
 };
 
 export type TodoState = {
-    tasks: Todo[]
+    tasks: Todo[];
 };
