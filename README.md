@@ -1,4 +1,8 @@
 # React + Redux + Hooks tryout
+[![Build Status](https://travis-ci.com/marcveens/react-redux-hooks.svg?branch=master)](https://travis-ci.com/marcveens/react-redux-hooks)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=react-redux-hooks&metric=alert_status)](https://sonarcloud.io/dashboard?id=react-redux-hooks)
+ [![Edit react-redux-hooks](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/marcveens/react-redux-hooks/tree/master/?fontsize=11)
+
 There are a couple of changes made to the way of working:
 - No use of classes anymore, only functional components;
 - Now using custom hooks instead of higher order components;

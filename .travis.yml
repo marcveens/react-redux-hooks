@@ -1,0 +1,22 @@
+language: node_js
+
+node_js:
+  - "11.14.0"
+
+install:
+  - npm install
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm run lint
+  - npm run build
+  - npm run tslint-report && sonar-scanner
+
+addons:
+  sonarcloud:
+    organization: "marcveens-github"
+    token:
+      secure: "$SONAR_TOKEN"
