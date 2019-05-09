@@ -8,5 +8,5 @@ There are a couple of changes made to the way of working:
 Inspiration:
 - https://github.com/facebookincubator/redux-react-hook
 - https://redux.js.org/recipes/usage-with-typescript#type-checking-state
-- https://reactjs.org/docs/hooks-effect.html
+- https://reactjs.org/docs/hooks-custom.html
 - https://itnext.io/how-to-create-react-custom-hooks-for-data-fetching-with-useeffect-74c5dc47000a

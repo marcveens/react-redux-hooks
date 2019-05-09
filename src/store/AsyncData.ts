@@ -9,17 +9,3 @@ export const asyncDataInitialState = {
 	error: null,
 	data: null
 };
-
-
-const readBody = (body: any) => body.json();
-export const useAsyncTaskFetch = (input: string, useAsyncTask: Function) =>
-	useAsyncTask(
-		async () => {
-			const response = await fetch(input);
-			if (!response.ok) {
-				throw new Error(response.statusText);
-			}
-			return await readBody(response);
-		},
-		[input]
-	);

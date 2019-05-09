@@ -4,21 +4,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/RootState';
 import { StarWarsState } from './StarWarsState';
 import { setLoaderStarWarsAction, setErrorStarWarsAction, setStarWarsAction } from './StarWarsActions';
-import { ApiStarWarsPeople } from '../api/types/ApiStarWarsRequest';
-import { useAsyncTaskFetch } from '../store/AsyncData';
+import { ApiProxyType, ApiProxy } from '../api/ApiProxy';
 
 type UseStarWarsProps = StarWarsState;
 
-const useAsyncTask = (task: Function, deps: any[]) => {
+const useAsyncTask = (url: string) => {
 	const starWars: StarWarsState = useSelector((state: RootState) => state.starWars);
+	const apiProxy: ApiProxyType = ApiProxy();
 	let dispatch = useDispatch();
 
 	useEffect(() => {
 		const start = async () => {
 			dispatch(setLoaderStarWarsAction());
 			try {
-				const result = await task() as ApiStarWarsPeople;
-				dispatch(setStarWarsAction(result.results));
+				const data = await apiProxy.getStarWarsPeople();
+				dispatch(setStarWarsAction(data.results));
 			} catch (e) {
 				dispatch(setErrorStarWarsAction(e));
 			}
@@ -27,15 +27,12 @@ const useAsyncTask = (task: Function, deps: any[]) => {
 		if (!starWars.people.data && !starWars.people.loading && !starWars.people.error) {
 			start();
 		}
-	}, deps);
+	}, [url]);
 
 	return starWars;
 };
 
 
 export const useStarWars = (): UseStarWarsProps => {
-	return useAsyncTaskFetch(
-		'https://swapi.co/api/people/?format=json',
-		useAsyncTask
-	);
+	return useAsyncTask('https://swapi.co/api/people/?format=json');
 }

@@ -15,8 +15,8 @@ export const useTodo = (): UseTodoProps => {
     const dispatch = useDispatch();
 
     const todos: TodoState = useSelector((state: RootState) => state.todos);
-    const removeTodo = useCallback((index: number) => dispatch(removeTodoAction(index)), []);
-    const addTodo = useCallback((todo: Todo) => dispatch(addTodoAction(todo)), []);
+    const removeTodo = useCallback((index: number) => dispatch(removeTodoAction(index)), [dispatch]);
+    const addTodo = useCallback((todo: Todo) => dispatch(addTodoAction(todo)), [dispatch]);
 
     return { todos, removeTodo, addTodo };
 }
