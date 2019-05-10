@@ -27,7 +27,7 @@ const App: React.FC = () => {
             <StarWars />
 
             {showDelayedStarWars && 
-        <StarWars />
+                <StarWars />
             }      
         </Layout>
     );

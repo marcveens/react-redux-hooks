@@ -12,8 +12,8 @@ export class ServerApiProxy {
         this.urlBuilder = new ApiUrlBuilder('/');
     }
 
-    public async getStarWarsPeople(): Promise<ApiStarWarsPeople> {
-        return await this.getData<ApiStarWarsPeople>(this.urlBuilder.getStarWarsPeople());
+    public async getStarWarsPeople(search?: string): Promise<ApiStarWarsPeople> {
+        return await this.getData<ApiStarWarsPeople>(this.urlBuilder.getStarWarsPeople(search));
     }
 
     private async getData<T>(url: string, options?: FetchDataOptions): Promise<T> {

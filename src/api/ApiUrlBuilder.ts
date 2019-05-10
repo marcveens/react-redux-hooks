@@ -5,7 +5,7 @@ export class ApiUrlBuilder {
         this.baseUrl = baseUrl;
     }
 
-    public getStarWarsPeople(): string {
-        return 'https://swapi.co/api/people/?format=json';
+    public getStarWarsPeople(search?: string): string {
+        return `https://swapi.co/api/people/?format=json${search ? `&search=${search}` : ''}`;
     }
 }
