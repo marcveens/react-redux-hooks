@@ -1,0 +1,21 @@
+import { Api{{pascalCase componentName}} } from '../api/types/Api{{pascalCase componentName}}';
+import { SetLoaderAction, SetErrorAction, SetDataAction } from '../BaseRedux/BaseActions';
+
+export enum TypeKeys {
+    SET_LOADER = 'SET_LOADER_{{constantCase componentName}}',
+    SET_ERROR = 'SET_ERROR_{{constantCase componentName}}',
+    SET_DATA = 'SET_{{constantCase componentName}}'
+}
+
+export type setLoader{{pascalCase componentName}}Action = SetLoaderAction<TypeKeys.SET_LOADER>;
+export type setError{{pascalCase componentName}}Action = SetErrorAction<TypeKeys.SET_ERROR>;
+export type set{{pascalCase componentName}}Action = SetDataAction<TypeKeys.SET_DATA, Api{{pascalCase componentName}}[]>;
+
+export type {{pascalCase componentName}}ActionTypes = 
+    | setLoader{{pascalCase componentName}}Action 
+    | setError{{pascalCase componentName}}Action
+    | set{{pascalCase componentName}}Action;
+
+export const setLoader{{pascalCase componentName}}Action = () => ({ type: TypeKeys.SET_LOADER });
+export const setError{{pascalCase componentName}}Action = (error: string) => ({ type: TypeKeys.SET_ERROR, error });
+export const set{{pascalCase componentName}}Action = (data: Api{{pascalCase componentName}}[] | null) => ({ type: TypeKeys.SET_DATA, data });

@@ -1,0 +1,41 @@
+import { useEffect, useState } from 'react';
+// @ts-ignore Types are not up to date yet
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../store/RootState';
+import { setLoader{{pascalCase componentName}}Action, setError{{pascalCase componentName}}Action, set{{pascalCase componentName}}Action } from './{{pascalCase componentName}}Actions';
+import { ApiProxyType, ApiProxy } from '../api/ApiProxy';
+import { Api{{pascalCase componentName}} } from '../api/types/Api{{pascalCase componentName}}';
+import { AsyncData } from '../store/AsyncData';
+
+type Use{{pascalCase componentName}}Props = {
+    {{camelCase propertyName}}: AsyncData<Api{{pascalCase componentName}}[]>;
+    load{{pascalCase propertyName}}: (query?: string) => void;
+};
+
+export const use{{pascalCase componentName}} = (): Use{{pascalCase componentName}}Props => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const {{camelCase propertyName}}: AsyncData<Api{{pascalCase componentName}}[]> = useSelector((state: RootState) => state.{{camelCase componentName}}.{{camelCase propertyName}});
+    const apiProxy: ApiProxyType = ApiProxy();
+    let dispatch = useDispatch();
+
+    const fetchData = async (query: string) => {
+        dispatch(setLoader{{pascalCase componentName}}Action());
+        try {
+            const data = await apiProxy.get{{pascalCase componentName}}(query);
+            dispatch(set{{pascalCase componentName}}Action(data.results));
+        } catch (e) {
+            dispatch(setError{{pascalCase componentName}}Action(e));
+        }
+    };
+
+    useEffect(() => {
+        fetchData(searchQuery);
+    }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
+
+
+    const load{{pascalCase propertyName}} = (query?: string) => {
+        setSearchQuery(query || '');
+    };
+
+    return { {{camelCase propertyName}}, load{{pascalCase propertyName}} };
+};

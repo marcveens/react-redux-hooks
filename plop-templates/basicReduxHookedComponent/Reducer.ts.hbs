@@ -1,0 +1,16 @@
+import { TypeKeys, {{pascalCase componentName}}ActionTypes } from './{{pascalCase componentName}}Actions';
+import { {{pascalCase componentName}}State } from './{{pascalCase componentName}}State';
+import { asyncDataInitialState } from '../store/AsyncData';
+import { baseReducer } from '../BaseRedux/BaseReducer';
+
+const initialState: {{pascalCase componentName}}State = {
+    {{camelCase propertyName}}: asyncDataInitialState
+};
+
+export const {{camelCase componentName}}Reducer = (state: {{pascalCase componentName}}State = initialState, action: {{pascalCase componentName}}ActionTypes) =>
+    baseReducer<{{pascalCase componentName}}State>({
+        state,
+        action,
+        typeKeys: TypeKeys,
+        dataProperty: '{{camelCase propertyName}}'
+    });

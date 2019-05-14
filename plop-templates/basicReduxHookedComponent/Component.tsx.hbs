@@ -1,0 +1,20 @@
+import React from 'react';
+import { use{{pascalCase componentName}} } from './use{{pascalCase componentName}}';
+
+export const {{pascalCase componentName}}: React.FC = (): JSX.Element => {
+    const { {{camelCase propertyName}}, load{{pascalCase propertyName}} } = use{{pascalCase componentName}}();
+
+    return (
+        <>
+            { {{~camelCase propertyName~}}.loading && <div>Loading</div>}
+            { {{~camelCase propertyName~}}.error && <div>Error!: { {{~camelCase propertyName~}}.error.toString()}</div>}
+            { {{~camelCase propertyName~}}.data &&
+                <ul>
+                    { {{~camelCase propertyName~}}.data.map(({{camelCase propertyName}}, index) => (
+                        <li key={index}>{ {{~camelCase propertyName~}}.name}</li>
+                    ))}
+                </ul>
+            }
+        </>
+    );
+};
