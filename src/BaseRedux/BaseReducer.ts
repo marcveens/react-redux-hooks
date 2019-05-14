@@ -6,14 +6,18 @@ type BaseAction = {
     data: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
+type BaseReductionOptions<TState> = {
+    state: TState;
+    action: ActionParameter;
+    dataProperty: keyof TState;
+    typeKeys: TypeKeysType;
+};
+
 type ActionParameter = Partial<BaseAction>;
 
-export const baseReducer = <TState>(
-    state: TState,
-    action: ActionParameter,
-    dataProperty: keyof TState,
-    typeKeys: TypeKeysType
-): TState => {
+export const baseReducer = <TState>(props: BaseReductionOptions<TState>): TState => {
+    const { action, dataProperty, state, typeKeys } = props;
+
     switch (action.type) {
         case typeKeys.SET_LOADER:
             return { ...state, [dataProperty]: { ...state[dataProperty], loading: true } };

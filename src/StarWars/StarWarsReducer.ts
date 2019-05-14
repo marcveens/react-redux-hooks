@@ -7,5 +7,10 @@ const initialState: StarWarsState = {
     people: asyncDataInitialState
 };
 
-export const starWarsReducer = (state: StarWarsState = initialState, action: StarWarsActionTypes) => 
-    baseReducer<StarWarsState>(state, action, 'people', TypeKeys);
+export const starWarsReducer = (state: StarWarsState = initialState, action: StarWarsActionTypes) =>
+    baseReducer<StarWarsState>({
+        state,
+        action,
+        typeKeys: TypeKeys,
+        dataProperty: 'people'
+    });
