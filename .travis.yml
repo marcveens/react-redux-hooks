@@ -13,10 +13,3 @@ cache:
 script:
   - npm run eslint
   - npm run build
-  - npm run eslint-report && sonar-scanner
-
-addons:
-  sonarcloud:
-    organization: "marcveens-github"
-    token:
-      secure: "$SONAR_TOKEN"
