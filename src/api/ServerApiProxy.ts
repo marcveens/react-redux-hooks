@@ -1,5 +1,6 @@
 import { ApiUrlBuilder } from './ApiUrlBuilder';
 import { ApiStarWarsPeople } from './types/ApiStarWarsRequest';
+import { ApiCache } from './ApiCache';
 
 type FetchDataOptions = {
     noJson?: boolean;
@@ -7,9 +8,11 @@ type FetchDataOptions = {
 
 export class ServerApiProxy {
     private readonly urlBuilder: ApiUrlBuilder;
+    private readonly apiCache: ApiCache;
 
     public constructor() {
         this.urlBuilder = new ApiUrlBuilder('/');
+        this.apiCache = new ApiCache();
     }
 
     public async getStarWarsPeople(search?: string): Promise<ApiStarWarsPeople> {
@@ -19,6 +22,12 @@ export class ServerApiProxy {
     private async getData<T>(url: string, options?: FetchDataOptions): Promise<T> {
         let getDataPromise: Promise<T> = new Promise((resolve, reject) => {
             const cleanUrl = url.replace(/([^:]\/)\/+/g, '$1');
+            const cache = this.apiCache.get<T>(url);
+
+            if (cache) {
+                resolve(cache);
+                return;
+            }
 
             fetch(cleanUrl)
                 .then(async (res) => {
@@ -36,6 +45,7 @@ export class ServerApiProxy {
                     return json;
                 })
                 .then(res => {
+                    this.apiCache.set(url, res);
                     resolve(res as T);
                 })
                 .catch(error => {

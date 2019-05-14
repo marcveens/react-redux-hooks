@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useState } from 'react';
 // @ts-ignore Types are not up to date yet
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/RootState';
