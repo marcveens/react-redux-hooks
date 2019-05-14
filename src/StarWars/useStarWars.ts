@@ -30,7 +30,8 @@ export const useStarWars = (): UseStarWarsProps => {
 
     useEffect(() => {
         fetchData(searchQuery);
-    }, [searchQuery]);
+    }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
+
 
     const loadPeople = (query?: string) => {
         setSearchQuery(query || '');
