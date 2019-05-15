@@ -4,9 +4,13 @@ import { todoReducer } from '../Todo/TodoReducer';
 import { starWarsReducer } from '../StarWars/StarWarsReducer';
 import { RootState } from './RootState';
 
+// -- import-generated-reducers --
+
 const rootReducer = combineReducers({
     todos: todoReducer,
-    starWars: starWarsReducer
+    starWars: starWarsReducer,
+
+    // -- generated-reducers --
 });
 
 export function configureStore() {

@@ -7,48 +7,56 @@ module.exports = function (plop) {
             message: 'Name of component?'
         },
         {
-            type: 'list',
-            name: 'reduxType',
-            message: 'Basic (loading, error, data) or extended (custom) Redux template?',
-            choices: ['Basic', 'Extended']
-        },
-        {
             type: 'input',
             name: 'propertyName',
             message: 'Name of the state property in Redux?'
         }],
-        actions: function (answers) {
-            const actions = [];
-
-            if (answers.reduxType === 'Basic') {
-                actions.push({
-                    type: 'add',
-                    path: 'src/{{pascalCase componentName}}/{{pascalCase componentName}}Actions.ts',
-                    templateFile: 'plop-templates/basicReduxHookedComponent/Actions.ts.hbs'
-                });
-                actions.push({
-                    type: 'add',
-                    path: 'src/{{pascalCase componentName}}/{{pascalCase componentName}}Reducer.ts',
-                    templateFile: 'plop-templates/basicReduxHookedComponent/Reducer.ts.hbs'
-                });
-                actions.push({
-                    type: 'add',
-                    path: 'src/{{pascalCase componentName}}/{{pascalCase componentName}}State.ts',
-                    templateFile: 'plop-templates/basicReduxHookedComponent/State.ts.hbs'
-                });
-                actions.push({
-                    type: 'add',
-                    path: 'src/{{pascalCase componentName}}/{{pascalCase componentName}}.tsx',
-                    templateFile: 'plop-templates/basicReduxHookedComponent/Component.tsx.hbs'
-                });
-                actions.push({
-                    type: 'add',
-                    path: 'src/{{pascalCase componentName}}/use{{pascalCase componentName}}.ts',
-                    templateFile: 'plop-templates/basicReduxHookedComponent/use.ts.hbs'
-                });
+        actions: [
+            {
+                type: 'add',
+                path: 'src/{{pascalCase componentName}}/{{pascalCase componentName}}Actions.ts',
+                templateFile: 'plop-templates/reduxHookedComponent/Actions.ts.hbs'
+            }, {
+                type: 'add',
+                path: 'src/{{pascalCase componentName}}/{{pascalCase componentName}}Reducer.ts',
+                templateFile: 'plop-templates/reduxHookedComponent/Reducer.ts.hbs'
+            }, {
+                type: 'add',
+                path: 'src/{{pascalCase componentName}}/{{pascalCase componentName}}State.ts',
+                templateFile: 'plop-templates/reduxHookedComponent/State.ts.hbs'
+            }, {
+                type: 'add',
+                path: 'src/{{pascalCase componentName}}/{{pascalCase componentName}}.tsx',
+                templateFile: 'plop-templates/reduxHookedComponent/Component.tsx.hbs'
+            }, {
+                type: 'add',
+                path: 'src/{{pascalCase componentName}}/use{{pascalCase componentName}}.ts',
+                templateFile: 'plop-templates/reduxHookedComponent/use.ts.hbs'
+            },
+            {
+                type: 'append',
+                path: 'src/store/store.ts',
+                pattern: '// -- generated-reducers --',
+                template: '    {{camelCase componentName}}: {{camelCase componentName}}Reducer,'
+            },
+            {
+                type: 'append',
+                path: 'src/store/store.ts',
+                pattern: '// -- import-generated-reducers --',
+                template: 'import { {{camelCase componentName}}Reducer } from \'../{{pascalCase componentName}}/{{pascalCase componentName}}Reducer\';'
+            },
+            {
+                type: 'append',
+                path: 'src/store/RootState.ts',
+                pattern: '// -- generated-states --',
+                template: '    {{camelCase componentName}}: {{pascalCase componentName}}State;'
+            },
+            {
+                type: 'append',
+                path: 'src/store/RootState.ts',
+                pattern: '// -- import-generated-states --',
+                template: 'import { {{pascalCase componentName}}State } from \'../{{pascalCase componentName}}/{{pascalCase componentName}}State\';'
             }
-
-            return actions;
-        }
+        ]
     });
 };
