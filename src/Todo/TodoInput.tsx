@@ -15,8 +15,8 @@ export const TodoInput: React.FC = () => {
 
     return (
         <StyledTodoInput>
-            <input type="text" value={newTodo} onChange={e => setNewTodoValue(e.currentTarget.value)} />
-            <button onClick={addNewTodo}>add</button>
+            <input type="text" id="addInput" value={newTodo} onChange={e => setNewTodoValue(e.currentTarget.value)} />
+            <button id="addBtn" onClick={addNewTodo}>add</button>
         </StyledTodoInput>
     );
 };
