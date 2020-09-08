@@ -7,9 +7,13 @@ import { TodoRow, TodoList } from './Todo.style';
 export const Todo: React.FC = () => {
     const { todos, removeTodo } = useTodo();
 
+    console.log('test');
+
     return (
         <div>
             <Heading as="h1">Todo list</Heading>
+
+            <div>Hello</div>
 
             <TodoInput />
 
