@@ -6,6 +6,6 @@ export class ApiUrlBuilder {
     }
 
     public getStarWarsPeople(search?: string): string {
-        return `https://swapi.co/api/people/?format=json${search ? `&search=${search}` : ''}`;
+        return `https://swapi.dev/api/people/?format=json${search ? `&search=${search}` : ''}`;
     }
 }
